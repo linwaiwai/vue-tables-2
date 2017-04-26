@@ -16,36 +16,69 @@ module.exports = function (source) {
 
     return h(
       'div',
-      { 'class': "VueTables VueTables--" + this.source },
+      {
+        directives: [{
+          name: 'loading',
+          value: this.loading
+        }],
+        'class': "VueTables VueTables--" + this.source },
       [h(
         'div',
-        { 'class': 'row' },
+        { 'class': "mb20 el-table el-table--fit el-table--enable-row-hover el-table--enable-row-transition" },
         [h(
           'div',
-          { 'class': 'col-md-6' },
-          [normalFilter]
+          { 'class': 'row' },
+          [h(
+            'div',
+            { 'class': 'col-md-6' },
+            [normalFilter]
+          )]
         ), h(
           'div',
-          { 'class': 'col-md-6' },
-          [dropdownPagination, perPage]
+          { 'class': 'el-table__header-wrapper' },
+          [h(
+            'table',
+            {
+              attrs: { cellspacing: '0', cellpadding: '0', border: '0' },
+              style: 'width:100%', 'class': 'el-table__header VueTables__table table ' + this.opts.skin },
+            [h(
+              'thead',
+              null,
+              [h(
+                'tr',
+                null,
+                [headings]
+              ), columnFilters]
+            ), footerHeadings, h(
+              'tbody',
+              null,
+              [noResults, rows]
+            )]
+          )]
         )]
       ), h(
-        'table',
-        { 'class': 'VueTables__table table ' + this.opts.skin },
+        'div',
+        null,
         [h(
-          'thead',
-          null,
+          'div',
+          { 'class': 'el-pagination' },
           [h(
-            'tr',
-            null,
-            [headings]
-          ), columnFilters]
-        ), footerHeadings, h(
-          'tbody',
-          null,
-          [noResults, rows]
+            'span',
+            {
+              directives: [{
+                name: 'show',
+                value: parseInt(this.count)
+              }],
+
+              'class': 'el-pagination__total VuePagination__count' },
+            [' \u5171', this.count, '\u6761']
+          ), h(
+            'span',
+            { 'class': 'el-pagination__sizes' },
+            [dropdownPagination, perPage]
+          ), pagination]
         )]
-      ), pagination, dropdownPaginationCount]
+      ), dropdownPaginationCount]
     );
   };
 };

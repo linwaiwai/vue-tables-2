@@ -29,7 +29,7 @@ module.exports = function (h, that) {
         'select',
         { 'class': 'form-control',
           on: {
-            change: search
+            'change': search
           },
           attrs: {
             name: column,

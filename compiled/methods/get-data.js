@@ -5,12 +5,23 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 var merge = require('merge');
 
 module.exports = function (promiseOnly) {
-  var _data;
+  var _send;
 
   var keys = this.opts.requestKeys;
 
-  var data = (_data = {}, _defineProperty(_data, keys.query, this.query), _defineProperty(_data, keys.limit, this.limit), _defineProperty(_data, keys.orderBy, this.orderBy.column), _defineProperty(_data, keys.ascending, this.orderBy.ascending ? 1 : 0), _defineProperty(_data, keys.page, this.page), _defineProperty(_data, keys.byColumn, this.opts.filterByColumn ? 1 : 0), _data);
+  var send = (_send = {}, _defineProperty(_send, keys.query, this.query), _defineProperty(_send, keys.limit, this.limit), _defineProperty(_send, keys.orderBy, this.orderBy.column), _defineProperty(_send, keys.ascending, this.orderBy.ascending ? 1 : 0), _defineProperty(_send, keys.page, this.page), _defineProperty(_send, keys.byColumn, this.opts.filterByColumn ? 1 : 0), _send);
 
+  var data = {};
+  for (var key in send) {
+    if (send[key] != '') {
+      if (!this.opts.orderBy && (key == keys.orderBy || key == keys.ascending)) {
+        continue;
+      }
+      data[key] = send[key];
+    };
+  }
+
+  console.debug(data);
   data = merge(data, this.opts.params, this.customQueries);
 
   this.dispatch('loading', data);

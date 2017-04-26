@@ -3,32 +3,26 @@
 module.exports = function (h, that) {
 
   var perpageValues = require('./per-page-values')(h, that);
-
+  var hello = '';
   if (perpageValues.length > 1) {
     var id = 'VueTables__limit_' + that.id;
-    return h(
-      'div',
-      { 'class': 'form-group form-inline pull-right VueTables__limit' },
-      [h(
-        'label',
-        {
-          attrs: { 'for': id }
-        },
-        [that.display('limit')]
-      ), h(
-        'select',
-        { 'class': 'form-control',
-          attrs: { name: 'limit',
-            value: that.limit,
+    // console.debug(this.getLimit().bind(that));
+    var directives = [{ name: 'input', value: function value() {
+        alert('ddd');
+      }, modifiers: {} }];
 
-            id: id
-          },
-          on: {
-            change: that.setLimit.bind(that)
-          }
-        },
-        [perpageValues]
-      )]
+    // on-change事件有bug，所以使用input事件代替
+    return h(
+      'el-select',
+      {
+        attrs: { value: that.limit, placeholder: '\u8BF7\u9009\u62E9' },
+        on: {
+          'input': function (e) {
+            this.limit = e;
+          }.bind(that)
+        }
+      },
+      [perpageValues]
     );
   }
 

@@ -2,6 +2,8 @@
 
 var _vuePagination = require('vue-pagination-2');
 
+var _elementUi = require('element-ui');
+
 var _vuex = require('./state/vuex');
 
 var _vuex2 = _interopRequireDefault(_vuex);
@@ -32,6 +34,7 @@ var template = require('./template');
 exports.install = function (Vue, globalOptions, useVuex, customTemplate) {
 
   Vue.use(_vuePagination.VuePagination, useVuex);
+  Vue.use(_elementUi.Loading);
 
   var client = _merge2.default.recursive(true, (0, _table2.default)(), {
     name: 'client-table',

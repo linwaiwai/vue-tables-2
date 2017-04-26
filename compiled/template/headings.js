@@ -17,13 +17,13 @@ module.exports = function (h, that) {
       "th",
       {
         on: {
-          click: that.orderByColumn.bind(that, column)
+          "click": that.orderByColumn.bind(that, column)
         },
 
         "class": that.sortableClass(column) },
       [h(
-        "span",
-        { "class": "VueTables__heading" },
+        "div",
+        { "class": "VueTables__heading el-table_1_column_1 is-leaf" },
         [that.getHeading(column, h)]
       ), sortControl(column)]
     ));

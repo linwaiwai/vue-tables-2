@@ -19,7 +19,7 @@ module.exports = function (h, that) {
       { 'class': 'VuePagination' },
       [h(
         'p',
-        { 'class': 'VuePagination__count' },
+        { 'class': 'el-pagination__total VuePagination__count' },
         [count]
       )]
     );

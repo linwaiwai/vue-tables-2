@@ -47,6 +47,10 @@ exports.install = function (Vue, globalOptions, useVuex, customTemplate) {
         type: String,
         required: true
       },
+      method: {
+        type: String,
+        required: false
+      },
       options: {
         type: Object,
         required: false,

@@ -27,7 +27,7 @@ module.exports = function (h, that) {
             id: id
           },
           on: {
-            keyup: search
+            'keyup': search
           }
         },
         []
