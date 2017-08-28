@@ -19,11 +19,10 @@ module.exports = function (h, that) {
         on: {
           "click": that.orderByColumn.bind(that, column)
         },
-
-        "class": that.sortableClass(column) },
+        "class": "is-center is-leaf "+that.sortableClass(column) },
       [h(
         "div",
-        { "class": "VueTables__heading el-table_1_column_1 is-leaf" },
+        { "class": "VueTables__heading" },
         [that.getHeading(column, h)]
       ), sortControl(column)]
     ));
