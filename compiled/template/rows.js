@@ -13,7 +13,9 @@ module.exports = function (h, that) {
 
     if (that.opts.childRow) columns.push(h(
       'td',
-      null,
+      {
+        'class': 'is-center'
+      },
       [h(
         'span',
         {
@@ -30,7 +32,9 @@ module.exports = function (h, that) {
 
       columns.push(h(
         'td',
-        null,
+        {
+          'class': 'is-center'
+        },
         [rowTemplate ? rowTemplate({ row: row, column: column, index: index }) : that.render(row, column, h)]
       ));
     }.bind(that));
