@@ -24,7 +24,7 @@ module.exports = function (source) {
         'class': "VueTables VueTables--" + this.source },
       [h(
         'div',
-        { 'class': "mb20 el-table el-table--fit el-table--enable-row-hover el-table--enable-row-transition" },
+        { 'class': "mb20 el-table el-table--fit el-table--border el-table--enable-row-hover el-table--enable-row-transition" },
         [h(
           'div',
           { 'class': 'row' },
