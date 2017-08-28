@@ -12,14 +12,14 @@ module.exports = function (h, that) {
     []
   ));
 
-  that.allColumns.map(function (column) {
+  that.allColumns.map(function (column, index) {
     headings.push(h(
       "th",
       {
         on: {
           "click": that.orderByColumn.bind(that, column)
         },
-        "class": "is-center is-leaf "+that.sortableClass(column) },
+        "class": "is-center is-leaf el-table_column_"+index+" "+that.sortableClass(column) },
       [h(
         "div",
         { "class": "VueTables__heading" },
